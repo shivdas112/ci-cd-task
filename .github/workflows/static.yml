@@ -27,7 +27,7 @@ jobs:
     environment: dev
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Deploying to dev"
+      - run: echo "deploying to dev"
       
   deploy-test:
     needs: deploy-dev 
