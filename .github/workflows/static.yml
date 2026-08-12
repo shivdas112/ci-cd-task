@@ -23,6 +23,25 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
+  deploy-dev:
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying to dev"
+      
+  deploy-test:
+    needs: deploy-dev 
+    environment: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "running integration test"
+
+  deploy-prod:
+    needs: deploy-test 
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "running integration prod"    
   
   deploy:
     environment:
